@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {DashboardService, Todos} from '../../services/dashboard.service';
 
 @Component({
   selector: 'app-three',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./three.component.scss']
 })
 export class ThreeComponent implements OnInit {
+  todos: Todos[];
 
-  constructor() { }
+  constructor(private dashboardService: DashboardService) { }
 
   ngOnInit() {
+    this.getTodos();
+  }
+
+  getTodos() {
+    this.dashboardService.getTodos()
+      .subscribe((data: Todos[]) => this.todos = data);
   }
 
 }

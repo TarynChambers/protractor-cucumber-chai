@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Albums, DashboardService} from '../../services/dashboard.service';
 
 @Component({
   selector: 'app-two',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TwoComponent implements OnInit {
 
-  constructor() { }
+  albums: Albums[];
+
+  constructor(private dashboardService: DashboardService) { }
 
   ngOnInit() {
+    this.getAlbums();
+  }
+
+  getAlbums() {
+    this.dashboardService.getPosts()
+      .subscribe((data: Albums[]) => this.albums = data);
   }
 
 }

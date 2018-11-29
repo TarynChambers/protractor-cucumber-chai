@@ -1,3 +1,8 @@
-<p>
-  three works!
-</p>
+<div>
+  <ul *ngFor="let todo of todos">
+    <li><strong>userId:</strong> {{todo.userId}}</li>
+    <li><strong>id:</strong> {{todo.id}}</li>
+    <li><strong>title:</strong> {{todo.title}}</li>
+    <li><strong>completed:</strong> {{todo.completed}}</li>
+  </ul>
+</div>

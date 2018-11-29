@@ -1,3 +1,7 @@
-<p>
-  two works!
-</p>
+<div>
+  <ul *ngFor="let album of albums">
+    <li><strong>userId:</strong> {{album.userId}}</li>
+    <li><strong>id:</strong> {{album.id}}</li>
+    <li><strong>title:</strong> {{album.title}}</li>
+  </ul>
+</div>
