@@ -1,0 +1,15 @@
+<p>
+  dashboard works!
+</p>
+<div class="page-container">
+  <div class="container">
+    <div class="menu">
+      <ul>
+        <li><a [routerLink]="['/dashboard', 'one']">Item One</a></li>
+        <li><a [routerLink]="['/dashboard', 'two']">Item Two</a></li>
+        <li><a [routerLink]="['/dashboard', 'three']">Item Three</a></li>
+      </ul>
+    </div>
+    <div class="content"><router-outlet></router-outlet></div>
+  </div>
+</div>

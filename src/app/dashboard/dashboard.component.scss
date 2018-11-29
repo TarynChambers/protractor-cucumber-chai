@@ -1,0 +1,46 @@
+.page-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border: solid thin purple;
+}
+
+.container {
+  border: solid thin green;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  flex: 0 1 100%;
+}
+
+.menu {
+  border: solid thin red;
+  flex: 0 1 100%;
+}
+
+.menu-item {
+  border: solid thin black;
+}
+
+.content {
+  border: solid thin blue;
+  padding: 10px;
+}
+
+/* Medium screens */
+@media all and (min-width: 768px) {
+  .container{
+    flex-wrap: nowrap;
+    flex: 0 1 1400px;
+  }
+
+  .content {
+    flex: 0 1 auto;
+  }
+
+  .menu {
+    flex: 0 0 300px;
+  }
+
+}
