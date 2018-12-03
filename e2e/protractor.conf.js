@@ -1,8 +1,6 @@
 // Protractor configuration file, see link for more information
 // https://github.com/angular/protractor/blob/master/lib/config.ts
 
-const { SpecReporter } = require('jasmine-spec-reporter');
-
 exports.config = {
   allScriptsTimeout: 10000,
   SELENIUM_PROMISE_MANAGER: false,
@@ -10,7 +8,13 @@ exports.config = {
     './src/features/**/*.feature'
   ],
   capabilities: {
-    'browserName': 'chrome'
+    'browserName': 'chrome',
+    /**
+     * If this is set to be true, specs will be sharded by file (i.e. all
+     * files to be run by this set of capabilities will run in parallel).
+     * Default is false.
+     */
+    shardTestFiles: true
   },
   directConnect: true,
   baseUrl: 'http://localhost:4200/',
@@ -18,25 +22,18 @@ exports.config = {
   frameworkPath: require.resolve('protractor-cucumber-framework'),
   jasmineNodeOpts: {
     showColors: true,
-    defaultTimeoutInterval: 30000,
-    print: function() {}
-  },
-  onPrepare() {
-    require('ts-node').register({
-      project: require('path').join(__dirname, './tsconfig.e2e.json')
-    });
-    jasmine.getEnv().addReporter(new SpecReporter({ spec: { displayStacktrace: true } }));
+    defaultTimeoutInterval: 30000
   },
   restartBrowserBetweenTests: true,
   cucumberOpts: {
-    compiler: 'ts:ts-node/register',
+    format: ['progress', './node_modules/cucumber-pretty:output.txt', './node_modules/cucumber-pretty'],
+    compiler: [],
     require: [
       './src/stepDefinitions/**/*.ts',
     ],  // require step definition files before executing features
     tags: [],                      // <string[]> (expression) only execute the features or scenarios with tags matching the expression
     strict: true,                  // <boolean> fail if there are any undefined or pending steps
     'dry-run': false,              // <boolean> invoke formatters without executing steps
-    compiler: [],                   // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
   },
   /**
    * A callback function called once protractor is ready and available, and
