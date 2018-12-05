@@ -14,7 +14,7 @@ exports.config = {
      * files to be run by this set of capabilities will run in parallel).
      * Default is false.
      */
-    shardTestFiles: true
+    shardTestFiles: false
   },
   directConnect: true,
   baseUrl: 'http://localhost:4200/',
@@ -26,7 +26,12 @@ exports.config = {
   },
   restartBrowserBetweenTests: true,
   cucumberOpts: {
-    format: ['progress', './node_modules/cucumber-pretty:output.txt', './node_modules/cucumber-pretty'],
+    format: [
+      'progress',
+      './node_modules/cucumber-pretty:./e2e/reports/txt/e2e-results.txt',
+      'json:./e2e/reports/json/cucumber_report.json'
+
+    ],
     compiler: [],
     require: [
       './src/stepDefinitions/**/*.ts',
