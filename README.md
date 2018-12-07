@@ -20,8 +20,8 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 ## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+transpile the test code first by running `npm tse2e` this will create a `dist` directory under the `e2e` folder
 
-## Further help
+run the e2e test by running `npm run e2e` or simply `ng e2e`
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+an html report should open after the tests were run, additionally more reports can be found under `e2e/dist/txt`, `e2e/dist/json`, and `e2e/dist/html`
